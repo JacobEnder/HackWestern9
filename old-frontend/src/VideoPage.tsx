@@ -1,12 +1,11 @@
+import SkipButton from './SkipButton'; 
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { Box, Button, Typography } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import { useState, useEffect } from "react";
-import { getToxicityFromUrl } from './api';
 
 interface VideoPageProps {
-  onSkip: () => void,
-  url: string
+  onSkip: () => void
 }
 
 const toxicRating = (score: Number) => {
@@ -23,20 +22,20 @@ const toxicRating = (score: Number) => {
   }
 };
 
-export default function VideoPage({ onSkip, url }: VideoPageProps) {
+export default function VideoPage({ onSkip }: VideoPageProps) {
   const [score, setScore] = useState(0);
-  const [toxicity, setToxicity] = useState(null);
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
-    getToxicityFromUrl(url)
-      .then((data) => {
-        setToxicity(data) 
-      })
-  }, [url])
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+      let url = tabs[0].url;
+      setUrl(url);
+    });
+  }, [])
 
   return <>
     <Box sx={{}}>
-      {toxicity}
+      url
       <Box>
         {/* percent and toxicity label */}
         <Typography variant="h1">
