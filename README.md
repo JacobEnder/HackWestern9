@@ -2,7 +2,7 @@
 
 ## What it is
 
-(Insert title here) is a Chrome extension designed to allow users to detect bias and toxicity in YouTube videos that they watch. Users can analyze their videos for skewed language and content, and should they desire (for example, for children), users can skip sections of their videos that our classifier deems toxic or profane.
+_Detox_ is a Chrome extension designed to allow users to detect bias and toxicity in YouTube videos that they watch. Users can analyze their videos for skewed language and content, and should they desire (for example, for children), users can skip sections of their videos that our classifier deems toxic or profane.
 
 ## How it works
 
